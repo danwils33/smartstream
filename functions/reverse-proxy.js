@@ -3,7 +3,10 @@ const axios = require("axios");
 exports.handler = async function (event, context) {
   try {
     const targetUrl = "https://api.berri.ai" + event.path;
-    const response = await axios.get(targetUrl);
+    const response = await axios.get(targetUrl, {
+      headers: event.headers,
+      params: event.queryStringParameters,
+    });
 
     return {
       statusCode: 200,
