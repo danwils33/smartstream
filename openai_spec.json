@@ -1,0 +1,81 @@
+{
+    "info": {
+      "description": "API for querying BerriAI app",
+      "title": "BerriAI API",
+      "version": "1.0.0"
+    },
+    "openapi": "3.0.0",
+    "paths": {
+      "/query": {
+        "get": {
+          "parameters": [
+            {
+              "description": "The email address you are using on your berri.ai account",
+              "in": "query",
+              "name": "user_email",
+              "required": true,
+              "schema": {
+                "default": "daniel.danwilson@gmail.com",
+                "example": "daniel.danwilson@gmail.com",
+                "type": "string"
+              }
+            },
+            {
+              "description": "The instance you want to query, create_app returns an instance_id that you can query here",
+              "in": "query",
+              "name": "instance_id",
+              "required": true,
+              "schema": {
+                "default": "05bc1291-2f2c-48c9-ad63-674cf4dab074",
+                "example": "05bc1291-2f2c-48c9-ad63-674cf4dab074",
+                "type": "string"
+              }
+            },
+            {
+              "description": "The query for your instance",
+              "in": "query",
+              "name": "query",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "default": "gpt3.5-turbo",
+              "description": "The type of model to use (text-davinci-003 or gpt3.5-turbo). Defaults to gpt3.5-turbo if not provided.",
+              "in": "query",
+              "name": "model",
+              "required": false,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "properties": {
+                      "result": {
+                        "description": "The response to the query",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  }
+                }
+              },
+              "description": "Query result"
+            }
+          },
+          "summary": "Query BerriAI instance"
+        }
+      }
+    },
+    "servers": [
+      {
+        "url": "https://plugin.custombot.ai/"
+      }
+    ]
+  }
