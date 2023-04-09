@@ -14,10 +14,10 @@ exports.handler = async function (event, context) {
       body: JSON.stringify(response.data),
     };
   } catch (error) {
-    console.error("Error:", error);
-    return {
-      statusCode: error.response.status,
-      body: JSON.stringify({ error: error.message }),
+  console.error("Error:", error);
+  return {
+    statusCode: error.response ? error.response.status : 500,
+    body: JSON.stringify({ error: error.message }),
     };
   }
 };
