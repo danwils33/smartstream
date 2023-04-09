@@ -9,7 +9,7 @@
     },
     "api": {
         "type": "openapi",
-        "url": "https://plugin.custombot.ai",
+        "url": "https://smartstream.app",
         "is_user_authenticated": false
     },
     "logo_url": "api.berri.ai/logo.png",
